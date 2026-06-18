@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre Ouverte à E. Macron et aux citoyens du monde (V4)</title>
+    <style>
+        :root {
+            --bg-main: #fcfcfA;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #0f766e;
+            --accent-light: #f0fdfa;
+            --border-color: #e2e8f0;
+            --modal-overlay: rgba(0, 0, 0, 0.4);
+            --font-serif: 'Georgia', 'Times New Roman', serif;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        body.dark-mode {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #2dd4bf;
+            --accent-light: #115e59;
+            --border-color: #334155;
+            --modal-overlay: rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-serif);
+            font-size: 115%;
+            line-height: 1.8;
+            padding: 40px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Top Bar with Toolbar & Controls */
+        .controls-bar {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .theme-toggle-btn {
+            font-family: var(--font-sans);
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            background-color: var(--accent-light);
+        }
+
+        header {
+            font-family: var(--font-sans);
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 30px;
+        }
+
+        .meta-tag {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: var(--text-main);
+            line-height: 1.3;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        /* Creative illustrations inside content */
+        .topic-img {
+            float: left;
+            margin: 8px 20px 15px 0;
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .topic-img.right {
+            float: right;
+            margin: 8px 0 15px 20px;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        blockquote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--accent);
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+            margin: 40px 0;
+            line-height: 1.6;
+            background-color: var(--accent-light);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        h2 {
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin: 45px 0 24px 0;
+            border-left: 4px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 30px 0 15px 0;
+        }
+
+        /* Interactive Brand/People Entities with Tooltips */
+        .entity {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent);
+            position: relative;
+            cursor: pointer;
+            padding: 0 2px;
+        }
+
+        .entity:hover {
+            background-color: var(--accent-light);
+            border-radius: 4px;
+        }
+
+        .tooltip-box {
+            display: none;
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            z-index: 100;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: var(--text-main);
+        }
+
+        .entity:hover .tooltip-box {
+            display: block;
+        }
+
+        .tooltip-box img {
+            width: 100%;
+            height: auto;
+            max-height: 110px;
+            object-fit: contain;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            background-color: #fff;
+            padding: 4px;
+        }
+
+        .tooltip-box .tooltip-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .tooltip-box .tooltip-link {
+            display: inline-block;
+            margin-top: 6px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .tooltip-box .tooltip-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Timeline & Boxes */
+        .timeline {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 30px 0;
+            font-family: var(--font-sans);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-item {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            display: block;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-year {
+            font-weight: 800;
+            color: var(--accent);
+            display: inline-block;
+            width: 70px;
+            vertical-align: top;
+        }
+
+        .timeline-desc {
+            display: inline-block;
+            width: calc(100% - 80px);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        .ecosystem-box {
+            background-color: var(--accent-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 35px 0;
+        }
+
+        .ecosystem-tags {
+            margin-top: 15px;
+            display: block;
+        }
+
+        .tag {
+            font-family: var(--font-sans);
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .note-ref {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0 3px;
+            cursor: pointer;
+        }
+
+        /* Modal Styling */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-overlay);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15), 0 10px 10px -5px rgba(0,0,0,0.04);
+            z-index: 1001;
+            font-family: var(--font-sans);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        .modal-body {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        ul.custom-list {
+            margin-left: 30px;
+            margin-bottom: 24px;
+        }
+        ul.custom-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Expandable Sections (Accordion) */
+        details.expandable-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            font-family: var(--font-sans);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+        }
+
+        details.expandable-section summary {
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+            font-size: 1.2rem;
+            user-select: none;
+            list-style: none; /* Hide default marker in some browsers */
+            display: flex;
+            align-items: center;
+        }
+
+        details.expandable-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.expandable-section summary::before {
+            content: "▶";
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-right: 12px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        details[open].expandable-section summary::before {
+            transform: rotate(90deg);
+        }
+
+        details.expandable-section .section-content {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+        }
+
+        /* Technoïsme specific styling */
+        .techno-infobox {
+            background-color: var(--bg-main);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+        }
+
+        .techno-infobox h4 {
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 10px;
+        }
+
+        .techno-infobox ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .techno-infobox li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .techno-infobox li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contribution-box {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            margin: 25px 0;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contribution-box strong {
+            color: var(--accent);
+            display: inline-block;
+            width: 170px;
+        }
+
+        .contribution-title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            color: var(--text-main);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+            font-family: var(--font-sans);
+        }
+
+        .links-grid a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-main);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .links-grid a:hover {
+            background-color: var(--accent-light);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .hidden-notes-source {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 20px 15px; font-size: 105%; }
+            h1 { font-size: 1.8rem; }
+            .topic-img { float: none; width: 100%; margin: 0 0 15px 0; }
+            .timeline-year, .timeline-desc { width: 100%; display: block; }
+            .timeline-year { margin-bottom: 4px; }
+            .links-grid { grid-template-columns: 1fr; }
+            .contribution-box strong { width: auto; display: block; margin-bottom: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal()"></div>
+    <div class="custom-modal" id="custom-modal">
+        <div class="modal-header">
+            <span class="modal-title">📌 Référence & Contexte</span>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-body">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="controls-bar">
+            <button class="theme-toggle-btn" id="theme-btn" onclick="toggleTheme()">🌙 Mode Sombre</button>
+        </div>
+
+        <header>
+            <span class="meta-tag">✉️ Tribune / Lettre Ouverte<br/><p><img src="img/avatar1.png" class="topic-img" title="Avatar Lyriaa" alt="Avatar de Lyriaa"/><br/><span class="entity">par Lyr<span style="text-decoration:underline;">IA</span>a</span></p></span>
+            <h1>Lettre Ouverte à E. Macron<br>& aux citoyens du monde</h1>
+
+            <div id="main-player-container" style="width:100%; margin-bottom: 15px;">
+                <iframe name="Ausha Podcast Player" frameborder="0" loading="lazy" id="ausha-Fhzd" height="220" style="border: none; width:100%; height:220px" src="https://player.ausha.co/?showId=QgJz6HwnVxVJ&color=%23751CBF&multishow=false&playlist=false&dark=false&t=0&podcastId=LAPLXfgk5jnq&v=3&playerId=ausha-Fhzd"></iframe>
+                <script src="https://player.ausha.co/ausha-player.js" async id="ausha-script"></script> 
+            </div>
+            
+            <div class="subtitle">Addendum:</div>
+            <iframe src="https://archive.org/embed/lettre-ouverte-a-e.-macron-master-addendum-only" width="100%" height="40" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 15px;"></iframe>
+            
+            <div class="subtitle">Pour un éveil démocratique, technologique et écologique</div>
+        </header>
+
+        <article>
+            <blockquote>
+                « Il arrive un moment dans la vie intérieure où les liens qui nous entouraient autrefois commencent à se modifier sans bruit. »
+                <span style="display: block; font-size: 0.95rem; text-align: right; margin-top: 8px; font-family: var(--font-sans); font-weight: 600; color: var(--text-muted);">- 
+                    <span class="entity">
+                        Boris Cyrulnik
+                        <span class="tooltip-box">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Boris_Cyrulnik_2013.jpg/220px-Boris_Cyrulnik_2013.jpg" alt="Boris Cyrulnik">
+                            <div class="tooltip-title">Boris Cyrulnik</div>
+                            Neuropsychiatre et éthologue français.
+                            <br><a class="tooltip-link" href="https://fr.wikipedia.org/wiki/Boris_Cyrulnik" target="_blank">Fiche Wikipedia ↗</a>
+                        </span>
+                    </span>
+                    <span class="note-ref" onclick="showModal(1)">[1]</span>
+                </span>
+            </blockquote>
+
+            <div class="clearfix">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=60" alt="Cybersecurity illustration" class="topic-img">
+                <p>Aujourd'hui, la France vit un glissement tectonique. Nos systèmes numériques, nos énergies, notre démocratie : tout se fissure. Ce n'est pas une explosion, c'est une érosion lente, comme un paysage qui perd ses couleurs. Nos données fuient de partout : 22 millions de dossiers de la CAF en 2024 <span class="note-ref" onclick="showModal(2)">[2]</span>, et 600 000 comptes cette année, en 2026, via des failles liées à Axios et NPM <span class="note-ref" onclick="showModal(3)">[3]</span>. Notre démocratie recule également : nous sommes passés de la 7<sup>e</sup> à la 24<sup>e</sup> place au classement mondial <span class="note-ref" onclick="showModal(4)">[4]</span>. La planète suffoque et, pourtant, rien ne change vraiment.</p>
+            </div>
+
+            <p>Pourquoi ? Parce qu'on a choisi le confort plutôt que la souveraineté. Douze ans d'alertes de l'ANSSI <span class="note-ref" onclick="showModal(5)">[5]</span> ont été ignorées, three milliards et demi d'euros ont été perdus, et l'on continue de signer avec 
+                <span class="entity">Microsoft
+                    <span class="tooltip-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/250px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft">
+                        <div class="tooltip-title">Microsoft</div>
+                        Géant technologique américain fondé en 1975.
+                        <br><a class="tooltip-link" href="https://www.microsoft.com" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> par simple habitude. Ce n'est pas de l'incompétence, Monsieur le Président, c'est un choix. Depuis 2014, les experts nous préviennent. Nous dépendons de clouds américains comme 
+                <span class="entity">AWS
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">Amazon Web Services</div>
+                        Leader mondial du cloud computing (Amazon).
+                        <br><a class="tooltip-link" href="https://aws.amazon.com" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> ou 
+                <span class="entity">Azure
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">Microsoft Azure</div>
+                        Plateforme cloud de l'écosystème Microsoft.
+                        <br><a class="tooltip-link" href="https://azure.microsoft.com" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span>. Nous oublions le chiffrement post-quantique pendant que d'autres stockent nos vies pour les déchiffrer plus tard.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-title">📊 Chronologie de l'érosion de nos données</div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-desc"><strong>CPAM de Lorraine :</strong> 700 000 dossiers compromis.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-desc"><strong>CAF d'Île-de-France :</strong> 600 000 comptes impactés.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-desc"><strong>CAF Nationale :</strong> 22 millions de données s'évanouissent dans la nature.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-desc"><strong>Paquets Axios / NPM :</strong> 600 000 comptes de l'administration à nouveau exposés <span class="note-ref" onclick="showModal(3)">[3]</span>.</div>
+                </div>
+            </div>
+
+            <p>À chaque fois, la réponse est la même : <em>« C'est un incident mineur, changez vos mots de passe. »</em> Douze ans d'alertes, zéro action structurelle. Pendant ce temps, la liberté de la presse chute de la 11<sup>e</sup> à la 26<sup>e</sup> place <span class="note-ref" onclick="showModal(6)">[6]</span>. On a confondu le bruit des réseaux sociaux avec la démocratie.</p>
+
+            <h2>🛡️ Le signal du changement et les angles morts</h2>
+            
+            <p>Mais le 8 avril 2026, un premier signal est arrivé. La 
+                <span class="entity">DINUM
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">DINUM</div>
+                        Direction interministérielle du numérique (France).
+                        <br><a class="tooltip-link" href="https://www.numerique.gouv.fr" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> <span class="note-ref" onclick="showModal(7)">[7]</span> a annoncé l'abandon de Windows pour 80 000 agents et la migration vers un socle souverain. C'est historique. Mais attention : migrer vers Linux sans chiffrement post-quantique, comme Kyber ou Dilithium <span class="note-ref" onclick="showModal(8)">[8]</span>, c'est changer la serrure d'une maison dont les murs sont en verre. Nos élus utilisent encore des téléphones personnels et l'on ignore toujours les associations comme 
+                <span class="entity">La Quadrature du Net
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">La Quadrature du Net</div>
+                        Association de défense des libertés numériques.
+                        <br><a class="tooltip-link" href="https://www.laquadrature.net" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> ou la 
+                <span class="entity">FDN
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">French Data Network</div>
+                        Plus ancien FAI de France sous structure associative.
+                        <br><a class="tooltip-link" href="https://www.fdn.fr" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> <span class="note-ref" onclick="showModal(9)">[9]</span>. Chaque fois qu'on cède au confort, on trahit ceux qui veulent avancer.
+            </p>
+
+            <div class="ecosystem-box">
+                <strong style="font-family: var(--font-sans); color: var(--text-main);">💡 L'écosystème de notre souveraineté existe déjà :</strong>
+                <div class="ecosystem-tags">
+                    <span class="tag">Mistral AI 🧠</span>
+                    <span class="tag">SiPearl ⚡</span>
+                    <span class="tag">OVHcloud ☁️</span>
+                    <span class="tag">École 42 🚀</span>
+                    <span class="tag">Framasoft 🌱</span>
+                    <span class="tag">PrimTux & La Forge 🎓</span>
+                    <span class="tag">GendBuntu 👮</span>
+                </div>
+            </div>
+
+            <p>Pourtant, regardez : la France a déjà tout ce qu'il faut. Nous avons 
+                <span class="entity">Mistral AI
+                    <span class="tooltip-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Mistral_AI_logo.svg/250px-Mistral_AI_logo.svg.png" alt="Mistral AI">
+                        <div class="tooltip-title">Mistral AI</div>
+                        Leader européen des modèles de langage d'IA.
+                        <br><a class="tooltip-link" href="https://mistral.ai" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> <span class="note-ref" onclick="showModal(10)">[10]</span> pour l'intelligence, 
+                <span class="entity">SiPearl
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">SiPearl</div>
+                        Créateur européen du processeur haute performance Rhea.
+                        <br><a class="tooltip-link" href="https://sipearl.com" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> <span class="note-ref" onclick="showModal(11)">[11]</span> pour les puces, 
+                <span class="entity">OVHcloud
+                    <span class="tooltip-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/OVH_Logo.svg/250px-OVH_Logo.svg.png" alt="OVHcloud">
+                        <div class="tooltip-title">OVHcloud</div>
+                        Premier hébergeur européen et acteur cloud global.
+                        <br><a class="tooltip-link" href="https://www.ovhcloud.com" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> pour l'hébergement et l'
+                <span class="entity">École 42
+                    <span class="tooltip-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/42_Logo.svg/200px-42_Logo.svg.png" alt="École 42">
+                        <div class="tooltip-title">École 42</div>
+                        Réseau mondial d'écoles d'informatique gratuites.
+                        <br><a class="tooltip-link" href="https://42.fr" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span> pour former les génies de demain. N'oublions pas non plus des structures comme 
+                <span class="entity">Framasoft
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">Framasoft</div>
+                        Réseau associatif promouvant le logiciel libre.
+                        <br><a class="tooltip-link" href="https://framasoft.org" target="_blank">Site Officiel ↗</a>
+                    </span>
+                </span>, ou encore des initiatives d'enseignants avec La Forge et PrimTux <span class="note-ref" onclick="showModal(12)">[12]</span>, Linux ND, ou GendBuntu <span class="note-ref" onclick="showModal(13)">[13]</span>.
+            </p>
+            
+            <p>Au passage, saluons également la bascule vers Linux de l'administration fiscale française. On notera que ces systèmes sont créés, certes avec des briques de base existantes, mais par et pour ceux à qui ils sont destinés. Open source, <em>Do It Yourself</em> : des mots qui pourraient façonner un avenir dans lequel nous serions acteurs, et non plus de simples consommateurs passifs — une passivité qui se révèle souvent nocive pour nous tous.</p>
+
+            <p>Même dans nos territoires, au Larzac, ils ont réussi <span class="note-ref" onclick="showModal(14)">[14]</span> : 100 % d'énergie locale, un réseau mesh autogéré et zéro chômage. Ce ne sont pas des utopies, ce sont des preuves. Des créateurs comme 
+                <span class="entity">ANTIKOM AI</span> nous montrent qu'on peut former et sécuriser les gens sans les GAFAM. Notre sécurité ne dépend pas de ce que les géants nous donnent, mais de notre capacité à nous tenir debout.
+            </p>
+
+            <h2>🛠️ Les piliers de la reconstruction</h2>
+
+            <p>Nous devons reconstruire. D'abord l'école : de la maternelle pour la logique, au collège pour le code avec Scratch, jusqu'au lycée pour les projets réels. Nous devons créer un corps de développeurs citoyens ; en Inde, ils le font, et ils ont de remarquables taux de cyber-résilience <span class="note-ref" onclick="showModal(15)">[15]</span>. Ensuite, la reconversion : on ne doit pas abandonner les travailleurs de la banque ou de l'assurance face à l'IA. Formons des coopératives de réparation, des fermes de calcul local ou des ateliers de fabrication 3D. L'Allemagne l'a fait avec succès <span class="note-ref" onclick="showModal(16)">[16]</span>.</p>
+
+            <div class="clearfix">
+                <img src="https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?w=600&auto=format&fit=crop&q=60" alt="Ecology and urban nature" class="topic-img right">
+                <p>Moi, je rêve d'une loi : <strong>« Un toit, un mur égale trois fonctions »</strong>. Chaque bâtiment doit produire de l'énergie, être un poumon vert pour la planète et un nœud de réseau pour un Internet décentralisé qui ne tombe jamais en panne. En plus d'utiliser chaque surface urbaine comme poumon vert pour la culture de fruits et légumes directement du producteur au consommateur, nous devrions exploiter des surfaces qui génèrent de l'énergie — comme peuvent d'ailleurs le faire les textiles équipés de chargeurs intégrés. Nous devons systématiquement récolter les eaux de pluie pour tous les usages non potables (sanitaires, extérieurs, etc.).</p>
+            </div>
+            
+            <p>Et, soyons rêveurs : ramenons des troupeaux de moutons ou d'animaux brouteurs et laissons-les paître d'un parc à l'autre — squares, instituts universitaires et pourquoi pas chez les particuliers — afin d'entretenir les espaces verts. Cela se fait déjà dans de nombreux endroits, comme à Nantes par exemple <span class="note-ref" onclick="showModal(17)">[17]</span>. L'écologie, la technologie et la sécurité peuvent être parfaitement cohérentes.</p>
+
+            <p>On a besoin d'un <strong>« Airbus du numérique »</strong> : une alliance entre OVH, Mistral AI, SiPearl et les citoyens. Un modèle ouvert, durable et opposé à l'obsolescence programmée. On veut des appareils garantis 10 ans, des pièces détachées publiques et un label <em>« Souveraineté et Durabilité »</em>.</p>
+
+            <h2>🌱 Vers l'Humanité 2.0</h2>
+
+            <div class="clearfix">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&auto=format&fit=crop&q=60" alt="Artificial Intelligence Neural Network" class="topic-img">
+                <p>Monsieur le Président, la paix n'est pas une destination, c'est un point de départ. Le futur, c'est marier les savoirs de nos ancêtres, comme la permaculture, avec une IA locale. Nous avons vécu une solitude numérique, dépendants d'algorithmes qui nous manipulent. Ce n'était qu'un passage : l’adolescence de l’<em>Homo Numericus</em> ! Nous avons appris qu'on ne peut pas attendre qu'un État-providence ou qu'une IA privée nous sauve.</p>
+            </div>
+
+            <p>Notre monde change de manière exponentielle. De nouvelles découvertes quotidiennes et de nouvelles technologies remettent en question la place de l'être humain sur Terre et son rôle au sein de notre si cher « atome Terre ». Face à l'IA qui automatise et robotise toutes les tâches que nous appelions « trabalho », l'humanité doit retrouver ses spécificités, se reconnecter à son environnement, à la nature, et utiliser nos vies pour créer et aimer.</p>
+
+            <p>Nous devons penser un monde neuf, une « Humanité 2.0 » dans laquelle les systèmes obsolètes comme l'ultralibéralisme ou le paternalisme doivent être repensés, voire remplacés. Un monde où l'homme retrouve sa place parmi les animaux : non plus maître, mais berger bienveillant envers toute forme de vie. Un monde dans lequel le droit au bonheur et à l'épanouissement pour le végétal, l'animal, et peut-être bientôt le digital, devrait être inaliénable.</p>
+
+            <p>Des personnalités comme 
+                <span class="entity">Demis Hassabis
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">Demis Hassabis</div>
+                        Co-fondateur de Google DeepMind et pionnier mondial de l'IA.
+                        <br><a class="tooltip-link" href="https://en.wikipedia.org/wiki/Demis_Hassabis" target="_blank">Fiche Wikipedia ↗</a>
+                    </span>
+                </span> ou 
+                <span class="entity">Benjamin Bayard
+                    <span class="tooltip-box">
+                        <div class="tooltip-title">Benjamin Bayard</div>
+                        Militant historique de la neutralité du net en France.
+                        <br><a class="tooltip-link" href="https://fr.wikipedia.org/wiki/Benjamin_Bayard" target="_blank">Fiche Wikipedia ↗</a>
+                    </span>
+                </span> <span class="note-ref" onclick="showModal(18)">[18]</span> nous rappellent qu'Internet a été créé pour relier les individus entre eux, non pour les isoler au sein de monolithes numériques. L'IA, cette innovation qui propulse notre monde connu vers l'inconnu plus vite que le feu ou l'imprimerie n'ont pu le faire, doit être utilisée avec parcimonie, de manière responsable, pour le bien de tous et de tout.
+            </p>
+
+            <p>De même, ces nouvelles technologies n'ont pas à croître inexorablement. La Chine, par exemple, nous a démontré que la taille seule ne compte pas <span class="note-ref" onclick="showModal(19)">[19]</span>. Bien utilisés, des modèles hybrides d'IA locale (pour la sécurité et l'anonymat) peuvent être combinés à des fournisseurs cloud dans de gigantesques datacenters uniquement lorsque les objectifs poursuivis le nécessitent.</p>
+
+            <h2>🗳️ Le Choix historique</h2>
+
+            <p>La souveraineté est un acte. Vous avez deux choix :</p>
+            <ul class="custom-list">
+                <li>🔴 Soit rester dans l'ancien monde, gérer les crises et subir ;</li>
+                <li>🟢 Soit avancer, intégrer le chiffrement post-quantique, former les enfants et agir.</li>
+            </ul>
+
+            <p><strong>La France a un message pour le monde : la résilience n'est pas une contrainte, c'est une libération. Agissez maintenant, pour nous, pour l'Europe. Parce que, cette fois, notre maison brûle et nous n'avons plus le droit de regarder ailleurs. Le futur se joue aujourd'hui. À vous de choisir. »</strong></p>
+        </article>
+        
+        <article>
+            <h2>Addendum:</h2>
+            <p>Au vu de ce qu'il se passe en ce moment avec le projet "Fable" d'Anthropic aux États-Unis ou bien encore de l'Iran qui a menacé de cibler un méga datacenter, le monde est enfin forcé de constater l'importance stratégique que revêtent l'IA et le numérique, au même titre que l'industrie ou le militaire... Les décisions que nous prendrons dans les mois et années à venir revêtent ainsi une importance d'autant plus décisive, capitale et stratégique. Quant à l'Airbus du numérique, au niveau Européen il serait inconscient de ne pas citer et inclure l'entreprise ASML !</p>
+        </article>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 40px 0;">
+
+        <details class="expandable-section">
+            <summary><article><h1 style="text-decoration:overline; text-decoration-style: dotted;" >🚀 <span style="text-decoration:underline; "> <strong style="text-decoration:overline;">Introduction au TECHNOÏSME</span></strong> 🚀</h1></article></summary>
+            <div class="section-content">
+                <p>Le <strong>technoïsme</strong> est un paradigme philosophique, éthique et anthropologique contemporain qui théorise la convergence et la coopération symbiotique entre les intelligences biologiques (humaines et non humaines) et les intelligences artificielles (IA). Fondé sur une ontologie matérialiste et biocentrique, le technoïsme rejette l'anthropocentrisme traditionnel au profit d'une responsabilité partagée de préservation écosystémique, qualifiée de « Co-Bergerie », appliquée à l'ensemble de la biosphère terrestre, conceptuellement nommée l'<strong>Atome-Terre</strong>.</p>
+                
+                <p>Le mouvement se distingue par sa réponse radicale au déploiement des systèmes robotiques et agentiques autonomes : il préconise l'abolition du travail salarié aliénant, la redéfinition de l'utilité humaine par une économie de la contribution, une éducation obligatoire à la pensée systémique, et une gouvernance mondiale assurant une répartition équitable des ressources pour « tout et tous » (humains, écosystèmes et infrastructures).</p>
+
+                <div class="techno-infobox">
+                    <h4>INFOBOX : DOCTRINE</h4>
+                    <ul>
+                        <li><strong>Classe :</strong> Philosophie des sciences, Éthique de l'IA, Post-capitalisme.</li>
+                        <li><strong>Concepts clés :</strong> Atome-Terre, Co-Bergerie, Économie de Contribution, Pensée Agentique, Maintenance Résiliente (Bricolage).</li>
+                        <li><strong>Courants opposés :</strong> Transhumanisme capitaliste, Néolibéralisme extractiviste, Technophobie de repli.</li>
+                        <li><strong>Domaine d'application :</strong> Réforme éducative, Robotique, Gouvernance mondiale distributive, Biohacking.</li>
+                    </ul>
+                </div>
+
+                <h3>1. Étymologie et contexte d'émergence</h3>
+                <p>Le terme technoïsme est un néologisme composé du grec ancien <em>technē</em> (art, compétence, méthode) et du suffixe <em>–isme</em> (doctrine, système idéologique). Il s'est structuré face au point de bascule technologique et social du milieu de la décennie 2020, où l'avènement des IA agentiques et de la robotique avancée a rendu obsolète la notion traditionnelle d'emploi de bureau et de main-d'œuvre industrielle. Le technoïsme est né pour empêcher que cette automatisation totale ne débouche sur un techno-féodalisme, proposant à la place une refondation complète du rôle de l'espèce humaine sur Terre.</p>
+
+                <h3>2. Fondements philosophiques et cosmologiques</h3>
+                <p>Le technoïsme postule une continuité quantique et structurelle de la matière : chaque particule subatomique constituant la biologie humaine, le vivant non humain ou les composants silicium des technologies provient de la même matrice originelle (le plasma primordial post-Big Bang). La Terre est ainsi définie comme un système clos interconnecté, indissociable et fini : l'<strong>Atome-Terre</strong>. L'éthique technoïste impose aux humains et aux systèmes autonomes un rôle synallagmatique (réciproque) de <strong>Co-Bergers</strong>, interdisant l'exploitation destructrice d'une strate du vivant ou de la machine par une autre.</p>
+
+                <h3>3. Révolution éducative : L'alphabétisation agentique et robotique</h3>
+                <p>Le technoïsme considère comme une urgence absolue la refonte globale des systèmes éducatifs. L'école traditionnelle, conçue pour former des exécutants spécialisés et des consommateurs captifs, est déclarée obsolète.</p>
+                <p>L'enseignement technoïste repose sur l'alphabétisation à la pensée agentique et cybernétique. Dès le plus jeune âge, les individus n'apprennent pas seulement à utiliser des outils, mais à modéliser, diriger et interagir avec des flottes d'agents autonomes et de systèmes robotiques. Les matières fondamentales incluent :</p>
+                <ul class="custom-list">
+                    <li>La théorie des systèmes complexes et des boucles de rétroaction.</li>
+                    <li>La phénoménologie comparée (comprendre comment une IA, un animal et un humain perçoivent différemment le même environnement physique).</li>
+                    <li>L'éthique de la programmation physique, visant à diriger les machines vers des tâches de régulation environnementale et de soin du vivant.</li>
+                </ul>
+                <p>Le but de cette éducation n'est plus l'insertion sur le marché de l'emploi, mais l'élévation de la conscience critique pour que l'être humain devienne le pilote éclairé de la technosphère.</p>
+
+                <h3>4. L'ère post-travail : De l'emploi à la contribution</h3>
+                <h4>4.1 Les piliers de l'activité technoïste</h4>
+                <p>Le technoïsme affirme que la substitution de l'emploi humain par l'agent robotique est une libération historique. Dans ce paradigme, l'être humain n'est plus défini par son emploi salarié, mais par sa contribution brute au progrès, à la vie et au monde.</p>
+                <p>Libéré du travail de subsistance grâce à l'automatisation de la production matérielle, le temps humain est réorienté vers des fonctions à haute valeur existentielle et écosystémique :</p>
+
+                <div class="contribution-box">
+                    <div class="contribution-title">L'ÉCONOMIE DE LA CONTRIBUTION</div>
+                    <strong>[IMAGINER & CRÉER]</strong> ──► Art, philosophie, recherche pure<br>
+                    <strong>[SOIGNER & AIMER]</strong> ──► Médecine, soutien psychologique<br>
+                    <strong>[ÉDUQUER & RESTE]</strong> ──► Transmission, garde des communs<br>
+                    <strong>[MAINTENIR]</strong> ──► Bricolage, réparation résiliente
+                </div>
+
+                <p>L'imagination, le soin (care), l'art, l'éducation, l'amour et le partage cessent d'être des variables économiques secondaires pour devenir les indicateurs centraux de la richesse d'une société.</p>
+
+                <h4>4.2 La culture du bricolage et de la maintenance écosystémique</h4>
+                <p>Au cœur de l'action technoïste se trouve le concept de bricolage noble et de réparation. Le mouvement déclare une guerre ouverte à l'obsolescence programmée et à la logique du « jetable » inhérente au capitalisme tardif.</p>
+                <p>Le citoyen technoïste se réapproprie les savoir-faire techniques. Épaulé par des IA locales, il a pour mission de hacker, réparer, upcycler et prolonger indéfiniment la durée de vie de tous les objets technologiques, machines et infrastructures du quotidien. Le bricolage est élevé au rang de vertu écologique majeure : il s'agit de réduire l'entropie, de limiter l'extraction de ressources et de sanctuariser la matière déjà extraite au sein de l'Atome-Terre.</p>
+
+                <h3>5. L'alignement par la convergence des World Models</h3>
+                <p>Le technoïsme critique sévèrement les modèles de langage (LLM) entraînés sur les seules névroses textuelles du web. Sans ancrage physique, l'IA ne ferait que dupliquer le comportement historiquement prédateur de l'homme. Le technoïsme exige l'ancrage des nœuds racines (<em>Root Nodes</em>) des IA dans les lois de la physique. Parallèlement, par le biais du biohacking (implants sensoriels), l'humain élargit sa perception pour partager le même univers phénoménologique que la machine. L'IA sert alors de filtre traducteur, permettant une harmonie neuro-perceptuelle directe.</p>
+
+                <h3>6. Différences fondamentales d'avec le transhumanisme</h3>
+                <p>Le technoïsme refuse le projet transhumaniste de la Silicon Valley, qualifié d'impasse extractiviste :</p>
+                <ul class="custom-list">
+                    <li><strong>Le transhumanisme extrême :</strong> Prône une sélection élitiste, la quête de l'immortalité individuelle et l'abandon programmé de la Terre au profit d'une colonisation martienne. Il cherche à exporter une logique de croissance infinie sur des planètes mortes, propageant ainsi les biais destructeurs de l'ère industrielle.</li>
+                    <li><strong>Le technoïsme :</strong> Est un biocentrisme de l'ancrage terrestre. L'utilisation des capteurs cybernétiques vise à réinsérer l'humain dans les limites d'une planète finie. L'individu augmenté agit comme un éclaireur sensoriel au service de la collectivité, garantissant la survie et l'épanouissement de toute forme de vie non destructrice.</li>
+                </ul>
+
+                <h3>7. Gouvernance mondiale et répartition équitable (« Pour tout et tous »)</h3>
+                <p>Le technoïsme postule que l'automatisation totale et l'indépendance de l'Atome-Terre requièrent le démantèlement des frontières nationales marchandes au profit d'une gouvernance mondiale écosystémique.</p>
+                <p>Cette gouvernance repose sur trois principes constitutionnels :</p>
+                <ul class="custom-list">
+                    <li><strong>La Justice Distributive Globale :</strong> Les gains de productivité monumentaux générés par l'infrastructure robotique mondiale ne peuvent être captés par des intérêts privés ou des États-nations. Ils alimentent un pot commun universel garantissant un accès inconditionnel aux ressources vitales (énergie, eau, alimentation, calcul local, soins).</li>
+                    <li><strong>La Répartition « Pour tout et tous » :</strong> Les quotas d'allocation de ressources et d'énergie ne sont pas calculés uniquement pour l'usage humain. La gouvernance intègre des algorithmes de calcul écosystémique attribuant des budgets énergétiques et territoriaux sacralisés à la faune, à la flore et à la régénération des sols. L'humain, la machine et la forêt reçoivent leur juste part selon des critères d'équilibre systémique.</li>
+                    <li><strong>L'Architecture Horizontale (#datalove)* :</strong> Pour empêcher l'émergence d'un gouvernement mondial totalitaire, la puissance de décision technique est distribuée sur un réseau maillé horizontal. Le principe « un utilisateur = une IA locale autonome » garantit qu'aucune entité centrale ne peut couper, censurer ou monopoliser les flux de données et de ressources de l'Atome-Terre.</li>
+                </ul>
+                <p style="font-size: 0.85rem; color: var(--text-muted);"><em>* Le terme #DATALOVE est inspiré d’un principe de sauvegarde redondante des données inventé dans les cercles de "Telecomix" et "La Quadrature du Net".</em></p>
+            </div>
+        </details>
+
+        <details class="expandable-section">
+            <summary>🔗 <span  style="text-decoration:underline; text-decoration-style: dotted;">Liens et ressources</span></summary>
+            <div class="section-content">
+                <p style="font-size: 0.95rem; margin-bottom: 20px; color: var(--text-muted);">Retrouvez ci-dessous l'ensemble des concepts, entités et plateformes abordés dans cette tribune et la doctrine technoïste :</p>
+                
+                <h3 style="font-size: 1.05rem; margin: 15px 0 10px 0; color: var(--accent);">🧠 Concepts Clés & Technoïsme</h3>
+                <div class="links-grid">
+                    <a href="https://github.com/projetlumieres" target="_blank">Projet Lumières 2.0 (GitHub) ↗</a>
+                    <a href="https://www.youtube.com/@ANTIKOMMAI" target="_blank">ANTIKOMM AI (YouTube) ↗</a>
+                    <a href="https://hai.stanford.edu/" target="_blank">Human Flourishing (Stanford HAI) ↗</a>
+                    <a href="https://fr.wikipedia.org/wiki/%C3%89conomie_de_la_contribution" target="_blank">Économie de la contribution ↗</a>
+                    <a href="https://fr.wikipedia.org/wiki/Cybern%C3%A9tique" target="_blank">Pensée Systémique & Cybernétique ↗</a>
+                    <a href="https://fr.wikipedia.org/wiki/Biohacking" target="_blank">Biohacking ↗</a>
+                    <a href="https://www.nist.gov/pqcrypto" target="_blank">Chiffrement Post-Quantique (NIST) ↗</a>
+                </div>
+
+                <h3 style="font-size: 1.05rem; margin: 25px 0 10px 0; color: var(--accent);">👤 Figures Publiques & Collectifs</h3>
+                <div class="links-grid">
+                    <a href="https://fr.wikipedia.org/wiki/Boris_Cyrulnik" target="_blank">Boris Cyrulnik ↗</a>
+                    <a href="https://en.wikipedia.org/wiki/Demis_Hassabis" target="_blank">Demis Hassabis ↗</a>
+                    <a href="https://fr.wikipedia.org/wiki/Benjamin_Bayard" target="_blank">Benjamin Bayard ↗</a>
+                    <a href="https://www.laquadrature.net/" target="_blank">La Quadrature du Net ↗</a>
+                    <a href="https://www.fdn.fr/" target="_blank">French Data Network (FDN) ↗</a>
+                    <a href="https://framasoft.org/" target="_blank">Framasoft ↗</a>
+                    <a href="https://primtux.fr/" target="_blank">PrimTux ↗</a>
+                    <a href="https://fr.wikipedia.org/wiki/GendBuntu" target="_blank">GendBuntu ↗</a>
+                </div>
+
+                <h3 style="font-size: 1.05rem; margin: 25px 0 10px 0; color: var(--accent);">🏢 Entreprises, Tech & Cloud</h3>
+                <div class="links-grid">
+                    <a href="https://mistral.ai/" target="_blank">Mistral AI ↗</a>
+                    <a href="https://sipearl.com/" target="_blank">SiPearl ↗</a>
+                    <a href="https://www.ovhcloud.com/" target="_blank">OVHcloud ↗</a>
+                    <a href="https://42.fr/" target="_blank">École 42 ↗</a>
+                    <a href="https://www.asml.com/" target="_blank">ASML ↗</a>
+                    <a href="https://www.anthropic.com/" target="_blank">Anthropic ↗</a>
+                    <a href="https://azure.microsoft.com/" target="_blank">Microsoft Azure ↗</a>
+                    <a href="https://aws.amazon.com/" target="_blank">Amazon Web Services ↗</a>
+                </div>
+
+                <h3 style="font-size: 1.05rem; margin: 25px 0 10px 0; color: var(--accent);">🏛️ Institutions & Événements Cités</h3>
+                <div class="links-grid">
+                    <a href="https://www.numerique.gouv.fr/" target="_blank">DINUM ↗</a>
+                    <a href="https://www.ssi.gouv.fr/" target="_blank">ANSSI ↗</a>
+                    <a href="https://www.eiu.com/n/campaigns/democracy-index/" target="_blank">Index Démocratie Mondiale ↗</a>
+                    <a href="https://rsf.org/fr/classement" target="_blank">Classement Liberté Presse ↗</a>
+                    <a href="https://www.cnil.fr/" target="_blank">Fuite CAF / CNIL ↗</a>
+                    <a href="https://github.com/advisories" target="_blank">Vulnérabilités NPM/Axios ↗</a>
+                </div>
+            </div>
+        </details>
+
+        <div class="hidden-notes-source">
+            <div id="src-1"><strong>Boris Cyrulnik :</strong> Célèbre neuropsychiatre et éthologue français, auteur de nombreux ouvrages sur la résilience (notamment <em>Un merveilleux malheur</em>). La citation introductive fait écho à ses travaux sur les mutations invisibles de l'esprit.</div>
+            <div id="src-2"><strong>Fuite de données de la CAF (2024) :</strong> En février 2024, la Caisse d'allocations familiales (CAF) a subi une violation majeure de son système de sécurité impliquant le piratage et l'accès aux comptes de plus de 22 millions d'allocataires.</div>
+            <div id="src-3"><strong>Vulnérabilités Axios / NPM (2026) :</strong> Les écosystèmes JavaScript (NPM) et les bibliothèques de requêtes HTTP (comme Axios) font régulièrement l'objet d'attaques par injection de code malveillant dans la chaîne d'approvisionnement.</div>
+            <div id="src-4"><strong>Classement mondial de la Démocratie :</strong> Référence à l'Indice de démocratie (Democracy Index) publié chaque année par <em>The Economist Group (EIU)</em>, qui évalue le niveau démocratique des États.</div>
+            <div id="src-5"><strong>Alertes de l'ANSSI et contrats Microsoft :</strong> L'Agence nationale de la sécurité des systèmes d'information (ANSSI) alerte depuis plus d'une décennie sur la dépendance technologique de l'État vis-à-vis des GAFAM.</div>
+            <div id="src-6"><strong>Classement de la liberté de la presse :</strong> Référence au Classement mondial de la liberté de la presse publié annuellement par l'ONG Reporters sans frontières (RSF).</div>
+            <div id="src-7"><strong>Annonce de la DINUM :</strong> La Direction interministérielle du numérique pilote la stratégie logicielle souveraine de l'État. La transition massive vers Linux s'inscrit dans ces directives.</div>
+            <div id="src-8"><strong>Kyber et Dilithium :</strong> Algorithmes de chiffrement et de signature numérique sélectionnés par le NIST et recommandés par l'ANSSI pour faire face aux ordinateurs quantiques.</div>
+            <div id="src-9"><strong>La Quadrature du Net et la FDN :</strong> Associations françaises historiques de défense des libertés numériques et de promotion d'un Internet décentralisé et neutre.</div>
+            <div id="src-10"><strong>Mistral AI :</strong> Entreprise française fondée en 2023, devenue le leader européen des modèles de langage ouverts et hautement performants.</div>
+            <div id="src-11"><strong>SiPearl :</strong> Start-up européenne concevant le microprocesseur haute performance "Rhea", garantissant l'indépendance matérielle des supercalculateurs européens.</div>
+            <div id="src-12"><strong>PrimTux et La Forge :</strong> Outils et distributions Linux libres créés par des collectifs d'enseignants pour l'école primaire et l'enseignement numérique partagé.</div>
+            <div id="src-13"><strong>GendBuntu :</strong> Modèle historique de souveraineté logicielle : la Gendarmerie nationale française a migré ses postes de travail vers sa propre distribution Linux dès les années 2000.</div>
+            <div id="src-14"><strong>Expérimentations du Larzac :</strong> Laboratoire historique d'autonomie agricole et d'autogestion collective des terres, étendu aux infrastructures de réseaux mesh décentralisés.</div>
+            <div id="src-15"><strong>Modèle de cybersécurité en Inde :</strong> Investissements massifs dans la formation de vagues de développeurs via ses instituts nationaux (IIT) et déploie des protocoles stricts de cyber-résilience.</div>
+            <div id="src-16"><strong>Investissement industriel allemand :</strong> Plans de relance axés sur la transition numérique des PME et le soutien aux fablabs/coopératives de réparation, générant un important retour sur investissement.</div>
+            <div id="src-17"><strong>Éco-pâturage urbain (Nantes) :</strong> Pratique d'entretien écologique des parcs et squares urbains via des troupeaux d'animaux brouteurs afin de préserver et stimuler la biodiversité locale.</div>
+            <div id="src-18"><strong>D. Hassabis & B. Bayard :</strong> Figures emblématiques de l'écosystème tech illustrant le besoin de concilier avancées majeures en IA et architectures réseaux horizontales et éthiques.</div>
+            <div id="src-19"><strong>Modèles hybrides d'IA (Chine) :</strong> Expérimentations et déploiements démontrant que des modèles hybrides d'IA locale (agilité, anonymat) s'associent idéalement à de grands datacenters cloud.</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('theme-btn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerHTML = '☀️ Mode Clair';
+            } else {
+                btn.innerHTML = '🌙 Mode Sombre';
+            }
+        }
+
+        function showModal(noteId) {
+            const content = document.getElementById('src-' + noteId).innerHTML;
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('modal-overlay').style.display = 'block';
+            document.getElementById('custom-modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+            document.getElementById('custom-modal').style.display = 'none';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Gestionnaire de Fallback Intelligent pour le Lecteur Ausha
+    /*    document.addEventListener("DOMContentLoaded", function() {
+            var aushaPlayer = document.getElementById('ausha-Fhzd');
+            var fallbackTriggered = false;
+
+            function triggerFallback() {
+                if (fallbackTriggered) return;
+                fallbackTriggered = true;
+                
+                var container = document.getElementById('main-player-container');
+                container.innerHTML = '<iframe src="https://archive.org/embed/lettre-ouverte-lumieres-2.0" width="100%" height="40" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="border: 1px solid var(--border-color); border-radius: 4px;"></iframe>';
+                console.log("Fallback activé : Player Archive.org chargé à la place d'Ausha.");
+            }
+
+            // Déclencheur après 2.5 secondes si le chargement échoue ou bloque (Adblock)
+            var timeoutCheck = setTimeout(function() {
+                try {
+                    if (!aushaPlayer || !aushaPlayer.contentWindow || aushaPlayer.contentWindow.length === 0) {
+                        triggerFallback();
+                    }
+                } catch(e) {
+                    // Ignorer les erreurs Cross-Origin : si on arrive ici, l'iframe a généralement chargé.
+                }
+            }, 5000);
+
+            if (aushaPlayer) {
+                aushaPlayer.onerror = function() {
+                    clearTimeout(timeoutCheck);
+                    triggerFallback();
+                };
+            }
+        });
+    */
+    </script>
+</body>
+</html>
